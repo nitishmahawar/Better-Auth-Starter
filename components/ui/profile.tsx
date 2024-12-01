@@ -87,7 +87,7 @@ const ProfileEmail = React.forwardRef<HTMLParagraphElement, ProfileEmailProps>(
     return (
       <p
         ref={ref}
-        className={cn("text-sm text-muted-foreground -mt-1", className)}
+        className={cn("text-sm text-muted-foreground", className)}
         {...props}
       >
         {children}

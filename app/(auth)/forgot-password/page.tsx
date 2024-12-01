@@ -1,4 +1,3 @@
-"use client";
 import {
   Card,
   CardContent,
@@ -11,7 +10,11 @@ import Link from "next/link";
 import { ForgotPasswordForm } from "./forgot-password-form";
 import { Button } from "@/components/ui/button";
 
-export default function ForgotPasswordPage() {
+export const metadata = {
+  title: "Forgot Password",
+};
+
+const ForgotPasswordPage = () => {
   return (
     <Card className="w-full max-w-sm">
       <CardHeader className="text-center">
@@ -30,4 +33,6 @@ export default function ForgotPasswordPage() {
       </CardFooter>
     </Card>
   );
-}
+};
+
+export default ForgotPasswordPage;

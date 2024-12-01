@@ -1,4 +1,3 @@
-"use client";
 import {
   Card,
   CardContent,
@@ -7,11 +6,17 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ResetPasswordForm } from "./reset-password-form";
-import { useSearchParams } from "next/navigation";
 
-export default function ResetPasswordPage() {
-  const searchParams = useSearchParams();
-  const token = searchParams.get("token");
+export const metadata = {
+  title: "Reset Password",
+};
+
+interface ResetPasswordPageProps {
+  searchParams: Promise<{ token: string }>;
+}
+
+const ResetPasswordPage = async ({ searchParams }: ResetPasswordPageProps) => {
+  const token = (await searchParams).token;
 
   if (!token) {
     return (
@@ -38,4 +43,6 @@ export default function ResetPasswordPage() {
       </CardContent>
     </Card>
   );
-}
+};
+
+export default ResetPasswordPage;

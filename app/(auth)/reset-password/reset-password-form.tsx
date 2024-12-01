@@ -32,7 +32,7 @@ interface ResetPasswordFormProps {
   token: string;
 }
 
-export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
+export const ResetPasswordForm = ({ token }: ResetPasswordFormProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
@@ -131,4 +131,4 @@ export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
       </form>
     </Form>
   );
-}
+};

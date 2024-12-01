@@ -21,7 +21,7 @@ const formSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
 });
 
-export function ForgotPasswordForm() {
+export const ForgotPasswordForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -77,4 +77,4 @@ export function ForgotPasswordForm() {
       </form>
     </Form>
   );
-}
+};

@@ -2,9 +2,9 @@ import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { prisma } from "@/lib/prisma";
 import { redis } from "@/lib/redis";
-import { resend } from "./resend";
 import { VerificationEmail } from "@/emails/verification-email";
 import { ResetPasswordEmail } from "@/emails/reset-password-email";
+import { sendEmail } from "@/lib/email";
 
 export const auth = betterAuth({
   appName: "better-auth-starter",
@@ -12,9 +12,8 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
     requireEmailVerification: true,
-    async sendResetPassword(data, request) {
-      await resend.emails.send({
-        from: "onboarding@resend.dev",
+    async sendResetPassword(data) {
+      await sendEmail({
         to: data.user.email,
         subject: "Reset your password",
         react: ResetPasswordEmail({ resetPasswordUrl: data.url }),
@@ -36,9 +35,8 @@ export const auth = betterAuth({
   },
   emailVerification: {
     sendOnSignUp: true,
-    async sendVerificationEmail(data, request) {
-      await resend.emails.send({
-        from: "onboarding@resend.dev",
+    async sendVerificationEmail(data) {
+      await sendEmail({
         to: data.user.email,
         subject: "Verify your email address",
         react: VerificationEmail({ verificationUrl: data.url }),

@@ -10,7 +10,11 @@ import { SignUpForm } from "./sign-up-form";
 import Image from "next/image";
 import betterAuth from "@/public/better-auth.svg";
 
-const Page = () => {
+export const metadata = {
+  title: "Sign Up",
+};
+
+const SignUpPage = () => {
   return (
     <Card className="w-full max-w-sm">
       <CardHeader className="text-center">
@@ -31,4 +35,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default SignUpPage;
